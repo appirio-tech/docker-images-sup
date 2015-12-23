@@ -1,0 +1,55 @@
+# Domain for authentication [topcoder-dev.com|topcoder-qa.com|topcoder.com]
+authDomain: ${AUTH_DOMAIN}
+
+
+# for local dev, assume a docker running dynamodb locally (http://dockerhost:8200)
+#dynamodbEndpoint: ${DYNAMODB_ENDPOINT}
+dynamodbEndpoint: http://192.168.99.100:32000
+
+# server configuration
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+
+
+jerseyClient:
+  userAgent: submissionService
+
+fileServiceClient:
+  endpoint: ${FILE_SERVICE_ENDPOINT}
+
+challengeServiceClient:
+  endpoint: ${CHALLENGE_SERVICE_ENDPOINT}
+
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+    com.appirio: DEBUG
+
+
+  appenders:
+    - type: console
+      target: stdout
+      threshold: ALL
+      timeZone: UTC
+
+    - type: file
+      currentLogFilename: /var/log/ap-submission.log
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: /var/log/ap-submission-%d.log
+      archivedFileCount: 5
+      timeZone: UTC
+      logFormat:  "%-5level [%d{yyyy-dd-mm HH:mm:ss.SSS}] [%thread] %logger - %msg%n"

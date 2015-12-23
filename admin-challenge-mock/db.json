@@ -1,0 +1,182 @@
+{
+  "members": [
+    {
+      "id": "darth_vader",
+      "userId": 111,
+      "handle": "darth_vader"
+    },
+    {
+      "id": "yoda",
+      "userId": 222,
+      "handle": "yoda"
+    },
+    {
+      "id": "han_solo",
+      "userId": 333,
+      "handle": "han_solo"
+    },
+    {
+      "id": "r2d2",
+      "userId": 444,
+      "handle": "r2d2"
+    }
+  ],
+  "challenges": [
+    {
+      "updatedAt": "2015-10-28T19:57Z",
+      "createdAt": "2015-05-28T18:49Z",
+      "createdBy": "15050434",
+      "updatedBy": "8547899",
+      "technologies": "",
+      "status": "ACTIVE",
+      "track": "DEVELOP",
+      "subTrack": "CODE",
+      "name": "Awesome Code Challegnge",
+      "reviewType": "INTERNAL",
+      "id": 30049240,
+      "forumId": 593825,
+      "numSubmissions": 5,
+      "numRegistrants": 11,
+      "registrationStartDate": "2015-05-28T15:01Z",
+      "registrationEndDate": "2015-12-27T16:00Z",
+      "checkpointSubmissionEndDate": null,
+      "submissionEndDate": "2015-12-27T16:05Z",
+      "platforms": "",
+      "numberOfCheckpointPrizes": null,
+      "totalCheckpointPrize": null,
+      "totalPrize": 200,
+      "isPrivate": false,
+      "upcomingPhase": null,
+      "projectId": 7377,
+      "projectName": "TC - Web Based Arena",
+      "currentPhases": [
+        {
+          "updatedAt": "2015-10-28T15:57Z",
+          "createdAt": "2015-05-28T10:56Z",
+          "createdBy": "15050434",
+          "updatedBy": "8547899",
+          "challengeId": 30049240,
+          "id": 732863,
+          "phaseType": "Registration",
+          "phaseStatus": "Open",
+          "duration": 18406766790,
+          "scheduledStartTime": "2015-05-28T15:01Z",
+          "scheduledEndTime": "2015-12-27T16:00Z",
+          "actualStartTime": "2015-05-28T15:01Z",
+          "actualEndTime": null,
+          "fixedStartTime": "2015-05-28T13:00Z"
+        },
+        {
+          "updatedAt": "2015-10-28T15:57Z",
+          "createdAt": "2015-05-28T10:56Z",
+          "createdBy": "15050434",
+          "updatedBy": "8547899",
+          "challengeId": 30049240,
+          "id": 732864,
+          "phaseType": "Review",
+          "phaseStatus": "Open",
+          "duration": 17369977069,
+          "scheduledStartTime": "2015-06-12T20:20Z",
+          "scheduledEndTime": "2015-12-30T21:19Z",
+          "actualStartTime": "2015-06-12T20:20Z",
+          "actualEndTime": null,
+          "fixedStartTime": null
+        },
+        {
+          "updatedAt": "2015-10-28T15:57Z",
+          "createdAt": "2015-05-28T10:56Z",
+          "createdBy": "15050434",
+          "updatedBy": "8547899",
+          "challengeId": 30049240,
+          "id": 732865,
+          "phaseType": "Submission",
+          "phaseStatus": "Open",
+          "duration": 18406794059,
+          "scheduledStartTime": "2015-05-28T15:06Z",
+          "scheduledEndTime": "2015-12-27T16:05Z",
+          "actualStartTime": "2015-05-28T15:06Z",
+          "actualEndTime": null,
+          "fixedStartTime": null
+        }
+      ]
+    },
+    {
+      "updatedAt": "2015-10-28T19:57Z",
+      "createdAt": "2015-05-28T18:49Z",
+      "createdBy": "15050434",
+      "updatedBy": "8547899",
+      "technologies": "",
+      "status": "ACTIVE",
+      "track": "DESIGN",
+      "subTrack": "DESIGN_FIRST_2_FINISH",
+      "name": "Admin Design Challenge",
+      "reviewType": "INTERNAL",
+      "id": 30049241,
+      "forumId": 593825,
+      "numSubmissions": 5,
+      "numRegistrants": 11,
+      "registrationStartDate": "2015-05-28T15:01Z",
+      "registrationEndDate": "2015-12-27T16:00Z",
+      "checkpointSubmissionEndDate": null,
+      "submissionEndDate": "2015-12-27T16:05Z",
+      "platforms": "",
+      "numberOfCheckpointPrizes": null,
+      "totalCheckpointPrize": null,
+      "totalPrize": 200,
+      "isPrivate": false,
+      "upcomingPhase": null,
+      "projectId": 7377,
+      "projectName": "TC - Admin Interface",
+      "currentPhases": [
+        {
+          "updatedAt": "2015-10-28T15:57Z",
+          "createdAt": "2015-05-28T10:56Z",
+          "createdBy": "15050434",
+          "updatedBy": "8547899",
+          "challengeId": 30049240,
+          "id": 732863,
+          "phaseType": "Registration",
+          "phaseStatus": "Open",
+          "duration": 18406766790,
+          "scheduledStartTime": "2015-05-28T15:01Z",
+          "scheduledEndTime": "2015-12-27T16:00Z",
+          "actualStartTime": "2015-05-28T15:01Z",
+          "actualEndTime": null,
+          "fixedStartTime": "2015-05-28T13:00Z"
+        },
+        {
+          "updatedAt": "2015-10-28T15:57Z",
+          "createdAt": "2015-05-28T10:56Z",
+          "createdBy": "15050434",
+          "updatedBy": "8547899",
+          "challengeId": 30049240,
+          "id": 732864,
+          "phaseType": "Review",
+          "phaseStatus": "Open",
+          "duration": 17369977069,
+          "scheduledStartTime": "2015-06-12T20:20Z",
+          "scheduledEndTime": "2015-12-30T21:19Z",
+          "actualStartTime": "2015-06-12T20:20Z",
+          "actualEndTime": null,
+          "fixedStartTime": null
+        },
+        {
+          "updatedAt": "2015-10-28T15:57Z",
+          "createdAt": "2015-05-28T10:56Z",
+          "createdBy": "15050434",
+          "updatedBy": "8547899",
+          "challengeId": 30049240,
+          "id": 732865,
+          "phaseType": "Submission",
+          "phaseStatus": "Open",
+          "duration": 18406794059,
+          "scheduledStartTime": "2015-05-28T15:06Z",
+          "scheduledEndTime": "2015-12-27T16:05Z",
+          "actualStartTime": "2015-05-28T15:06Z",
+          "actualEndTime": null,
+          "fixedStartTime": null
+        }
+      ]
+    }
+  ]
+}
