@@ -1,0 +1,6 @@
+#!/bin/bash
+java -Djava.library.path=/dynamodb_local/DynamoDBLocal_lib -jar /dynamodb_local/DynamoDBLocal.jar >> /dev/null &
+sleep 30
+aws dynamodb create-table --table-name Submissions --attribute-definitions AttributeName=id,AttributeType=S AttributeName=userId,AttributeType=N AttributeName=referenceLookup,AttributeType=S --key-schema AttributeName=id,KeyType=HASH AttributeName=userId,KeyType=RANGE --global-secondary-indexes '[{"IndexName":"referenceLookup-index","KeySchema":[{"AttributeName":"referenceLookup","KeyType":"HASH"},{"AttributeName":"userId","KeyType":"RANGE"}],"Projection":{"ProjectionType":"ALL"}, "ProvisionedThroughput": {"ReadCapacityUnits": 2, "WriteCapacityUnits": 2}}]' --region us-east-1 --provisioned-throughput ReadCapacityUnits=4,WriteCapacityUnits=2 --endpoint-url http://localhost:8000 >> /dev/null &
+sleep 30
+java -Ddw.challengeServiceClient.endpoint="$CHALLENGE_SERVICE_ENDPOINT" -Ddw.fileServiceClient.endpoint="$FILE_SERVICE_ENDPOINT" -Ddw.dynamodbEndpoint=http://localhost:8000 -jar /data/submission.jar server /data/config.yml
