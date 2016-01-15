@@ -1,0 +1,15 @@
+FROM gliderlabs/alpine:3.1
+
+
+RUN apk --update add \ 
+      python \
+      py-pip \
+      curl \
+      bash && \
+      pip install --upgrade awscli && \
+      mkdir /root/.aws
+ADD dynamodb-run .
+ADD aws_creds .
+ENV AWS_CONFIG_FILE aws_creds
+
+CMD ["bash", "dynamodb-run", "dynamodb"]
