@@ -5,34 +5,39 @@ kafka:
     - "9092:9092"
 dynamodb:
   image: "parthshah/dynamodb-local:latest"
-  command: -sharedDb
+  command: -sharedDb -port 32000
   ports:
-   - "32000:8000"
-# dynamodb-setup: 
-#   build: .
-#   dockerfile: dynamodb-dockerfile
-#   links:
-#     # - dynamodb
-#     - mockapi
+   - "32000:32000"
+dynamodb-setup: 
+  build: .
+  dockerfile: dynamodb-dockerfile
+  links:
+    - dynamodb
 mockapi:
   image: "parthshah/mock-admin-challenge"
-  ports: 
-    - "8081:8010"
+  #ports: 
+  #  - "8081:8010"
 submission-service:
-  image: appiriodevops/ap-submission-microservice:dev.201601040301
-  ports:
-    - "8082:8080"
-    - "8083:8081"
+  #image: appiriodevops/ap-submission-microservice:dev.201601040301
+  image: parthshah/submissionservice
+  # volumes:
+    # - .:/data
+  # ports:
+    # - "8082:8080"
+    # - "8083:8081"
   links:
     - kafka
     - dynamodb
-    # - dynamodb-setup
+    - dynamodb-setup
     - mockapi
   environment:
+    AWS_ACCESS_KEY_ID: bogus
+    AWS_SECRET_ACCESS_KEY: bogus
+    AWS_DEFAULT_REGION: us-east-1
     DYNAMODB_ENDPOINT: http://dynamodb:32000
-    CHALLENGE_SERVICE_ENDPOINT: http://mock-api:8081/v3/
-    FILE_SERVICE_ENDPOINT: http://mock-api:8081/v3/
-    IDENTITY_SERVICE_ENDPOINT: http://mock-api:8081/v3/
+    CHALLENGE_SERVICE_ENDPOINT: http://mockapi:8010/v3/
+    FILE_SERVICE_ENDPOINT: http://mockapi:8010/v3/
+    IDENTITY_SERVICE_ENDPOINT: http://mockapi:8010/v3/
     ZOOKEEPER_HOSTS_LIST: kafka:2181
 nginx:
   build: .
@@ -41,4 +46,4 @@ nginx:
     - "8080:80"
   links: 
     - mockapi:mockapi
-    # - submission-service:submission-service
+    - submission-service:submission-service

@@ -3,8 +3,7 @@ authDomain: ${AUTH_DOMAIN}
 
 
 # for local dev, assume a docker running dynamodb locally (http://dockerhost:8200)
-#dynamodbEndpoint: ${DYNAMODB_ENDPOINT}
-dynamodbEndpoint: http://192.168.99.100:32000
+dynamodbEndpoint: ${DYNAMODB_ENDPOINT}
 
 # server configuration
 server:
