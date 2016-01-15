@@ -1,23 +1,23 @@
 {
   "users": [
     {
-      "id": "darth_vader",
-      "userId": 111,
+      "id": 111,
+      "status": "A",
       "handle": "darth_vader"
     },
     {
-      "id": "yoda",
-      "userId": 222,
+      "id": 222,
+      "status": "A",
       "handle": "yoda"
     },
     {
-      "id": "han_solo",
-      "userId": 333,
+      "id": 333,
+      "status": "A",
       "handle": "han_solo"
     },
     {
-      "id": "r2d2",
-      "userId": 444,
+      "id": 444,
+      "status": "A",
       "handle": "r2d2"
     }
   ],

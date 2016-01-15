@@ -1,6 +1,6 @@
-FROM nginx:latest
+FROM gliderlabs/alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf
+RUN apk-install nginx
 
-CMD nginx -t && nginx && tail -f /dev/null
 EXPOSE 80
+CMD nginx -t && nginx && tail -f /dev/null

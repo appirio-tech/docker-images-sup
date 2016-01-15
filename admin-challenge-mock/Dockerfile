@@ -1,17 +1,9 @@
-FROM    centos:centos6
+FROM gliderlabs/alpine:3.1
+
+RUN apk add --update nodejs
 
 ENV PORT 8010
 
-# Enable Extra Packages for Enterprise Linux (EPEL) for CentOS
-RUN     yum install -y epel-release
-# Install Node.js and npm
-RUN     yum install -y nodejs npm
-
-# Install app dependencies
-COPY package.json /src/package.json
-RUN cd /src; npm install
-
-# Bundle app source
 COPY . /src
 
 EXPOSE  8010

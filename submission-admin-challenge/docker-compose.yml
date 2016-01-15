@@ -4,37 +4,41 @@ kafka:
     - "2181:2181"
     - "9092:9092"
 dynamodb:
-  image: "urbanise/dynamodb-local:latest"
+  image: "parthshah/dynamodb-local:latest"
+  command: -sharedDb
   ports:
-    - "32000:8000"
-mockApi:
+   - "32000:8000"
+# dynamodb-setup: 
+#   build: .
+#   dockerfile: dynamodb-dockerfile
+#   links:
+#     # - dynamodb
+#     - mockapi
+mockapi:
   image: "parthshah/mock-admin-challenge"
   ports: 
     - "8081:8010"
-submissionService:
+submission-service:
   image: appiriodevops/ap-submission-microservice:dev.201601040301
   ports:
     - "8082:8080"
     - "8083:8081"
   links:
-    - kafka:kafka
-    - dynamodb:dynamodb
-    - mockApi:mockApi
+    - kafka
+    - dynamodb
+    # - dynamodb-setup
+    - mockapi
   environment:
     DYNAMODB_ENDPOINT: http://dynamodb:32000
-    CHALLENGE_SERVICE_ENDPOINT: http://mockApi:8081/v3/
-    FILE_SERVICE_ENDPOINT: http://mockApi:8081/v3/
-    IDENTITY_SERVICE_ENDPOINT: http://mockApi:8081/v3/
+    CHALLENGE_SERVICE_ENDPOINT: http://mock-api:8081/v3/
+    FILE_SERVICE_ENDPOINT: http://mock-api:8081/v3/
+    IDENTITY_SERVICE_ENDPOINT: http://mock-api:8081/v3/
     ZOOKEEPER_HOSTS_LIST: kafka:2181
-    # CHALLENGE_SERVICE_ENDPOINT: http://${MOCKAPI_PORT_8010_TCP_ADDR}:${MOCKAPI_PORT_8010_TCP_PORT}/v3/
-    # FILE_SERVICE_ENDPOINT: http://${MOCKAPI_PORT_8010_TCP_ADDR}:${MOCKAPI_PORT_8010_TCP_PORT}/v3/
-    # ZOOKEEPER_HOSTS_LIST: ${KAFKA_PORT_2181_TCP_ADDR}:${KAFKA_PORT_2181_TCP_PORT}
-    # IDENTITY_SERVICE_ENDPOINT: http://${MOCKAPI_PORT_8010_TCP_ADDR}:${MOCKAPI_PORT_8010_TCP_PORT}/v3/
 nginx:
   build: .
   dockerfile: nginx-dockerfile
   ports:
     - "8080:80"
   links: 
-    - mockApi:mockApi
-    - submissionService:submissionService
+    - mockapi:mockapi
+    # - submission-service:submission-service
