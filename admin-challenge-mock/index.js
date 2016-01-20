@@ -18,9 +18,8 @@ router.render = function(req, res) {
   console.log(res.statusCode)
 
   if (res.statusCode === 200) {
-    if (req.path.indexOf("users") > 0) {
-      // remove id
-      res.locals.data.id = res.locals.data.id.toString();
+    if (req.path.indexOf("members") > 0) {
+      delete res.locals.data.id;
     }
     res.jsonp({
       "id": "23bd6312:14e1d778bb9:-7fff",

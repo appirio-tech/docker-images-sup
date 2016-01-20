@@ -1,4 +1,26 @@
 {
+  "members": [
+    {
+      "id": "r2d2",
+      "userId": 111,
+      "handle": "darth_vader"
+    },
+    {
+      "id": "yoda",
+      "userId": 222,
+      "handle": "yoda"
+    },
+    {
+      "id": "yoda",
+      "userId": 333,
+      "handle": "han_solo"
+    },
+    {
+      "id": "yoda",
+      "userId": 444,
+      "handle": "r2d2"
+    }
+  ],
   "users": [
     {
       "id": 111,
