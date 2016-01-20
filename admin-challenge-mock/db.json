@@ -1,7 +1,7 @@
 {
   "members": [
     {
-      "id": "r2d2",
+      "id": "darth_vader",
       "userId": 111,
       "handle": "darth_vader"
     },
@@ -11,12 +11,12 @@
       "handle": "yoda"
     },
     {
-      "id": "yoda",
+      "id": "han_solo",
       "userId": 333,
       "handle": "han_solo"
     },
     {
-      "id": "yoda",
+      "id": "r2d2",
       "userId": 444,
       "handle": "r2d2"
     }
