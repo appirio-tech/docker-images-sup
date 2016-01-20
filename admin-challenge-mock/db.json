@@ -1,14 +1,14 @@
 {
   "members": [
     {
-      "id": "darth_vader",
+      "id": "yoda",
       "userId": 111,
-      "handle": "darth_vader"
+      "handle": "yoda"
     },
     {
-      "id": "yoda",
+      "id": "darth_vader",
       "userId": 222,
-      "handle": "yoda"
+      "handle": "darth_vader"
     },
     {
       "id": "han_solo",
@@ -25,12 +25,12 @@
     {
       "id": 111,
       "status": "A",
-      "handle": "darth_vader"
+      "handle": "yoda"
     },
     {
       "id": 222,
       "status": "A",
-      "handle": "yoda"
+      "handle": "darth_vader"
     },
     {
       "id": 333,
