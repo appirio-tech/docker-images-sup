@@ -2,8 +2,10 @@
 var fs = require('fs');
 var data = JSON.parse(fs.readFileSync('db.json', 'utf8'));
 
-var return404 = function() {
-  return {
+var return404 = function(res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.status(404);
+  res.json({
     "id": "-d1eec1c:151c946bf36:-5d5f",
     "result": {
       "success": true,
@@ -12,11 +14,12 @@ var return404 = function() {
       "content": "Resource Not found"
     },
     "version": "v3"
-  };
+  });
 }
 
-var returnData = function(data) {
-    return {
+var returnData = function(res, data) {
+  res.setHeader('Content-Type', 'application/json');
+  res.json({
       "id": "23bd6312:14e1d778bb9:-7fff",
       "result": {
         "success": true,
@@ -24,7 +27,7 @@ var returnData = function(data) {
         "metadata": null,
         "content": data
       }
-    };
+    });
   }
   // server.js
 
@@ -38,6 +41,7 @@ var bodyParser = require('body-parser');
 var _ = require('lodash');
 // configure app to use bodyParser()
 // this will let us get the data from a POST
+app.set("json spaces", 2);
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -51,60 +55,41 @@ var router = express.Router(); // get an instance of the express Router
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-  res.json({
+  returnData(res, {
     message: 'hooray! welcome to our api!'
   });
 });
 router.get('/members/', function(req, res) {
-  res.json(data.members);
+  returnData(res, data.members);
 });
 
 router.get('/users/', function(req, res) {
-  res.json(data.users);
+  returnData(res, data.users);
 });
 
 router.get('/challenges/', function(req, res) {
-  res.json(data.challenges);
+  returnData(res, data.challenges);
 });
 
 router.get('/members/:handle', function(req, res) {
-  console.log(req.params);
-  var member = _.find(data.members, function(m) {return req.params["handle"] === m.handle});
-  if (member) {
-    res.json(returnData(member));
-  } else {
-    res.json(return404());
-  }
+  var respData = _.find(data.members, function(m) {return req.params["handle"] === m.handle});
+  respData ? returnData(res, respData): return404(res);
 })
 
 router.get('/challenges/:id', function(req, res) {
-  var member = _.find(data.challenges, function(m) {return req.params["id"] == m.id});
-  if (member) {
-    res.json(returnData(member));
-  } else {
-    res.json(return404());
-  }
+  var respData = _.find(data.challenges, function(m) {return req.params["id"] == m.id});
+  respData ? returnData(res, respData): return404(res);;
 })
 
 router.get('/users/:id', function(req, res) {
-  var member = _.find(data.users, function(m) {return req.params["id"] === m.id});
-  if (member) {
-    res.json(returnData(member));
-  } else {
-    res.json(return404());
-  }
+  var respData = _.find(data.users, function(m) {return req.params["id"] == m.id});
+  respData ? returnData(res, respData): return404(res);
 })
 
 router.get('/members/:handle/challenges/', function(req, res) {
-  console.log(req.query);
   var cid =req.query.filter.split("=")[1];
-  console.log(cid);
-  var member = _.find(data.challenges, function(m) {return cid == m.id});
-  if (member) {
-    res.json(returnData(member));
-  } else {
-    res.json(return404());
-  }
+  var respData = _.find(data.challenges, function(m) {return cid == m.id});
+  respData ? returnData(res, respData): return404(res);  
 })
 
 // more routes for our API will happen here
