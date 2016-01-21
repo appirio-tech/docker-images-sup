@@ -5,4 +5,4 @@ RUN apk add --update nodejs
 COPY . /src
 
 EXPOSE  8010
-CMD ["node", "/src/index.js"]
+CMD ["node", "/src/index.js", "/src/db.json"]

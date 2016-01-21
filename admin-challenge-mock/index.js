@@ -1,6 +1,6 @@
 
 var fs = require('fs');
-var data = JSON.parse(fs.readFileSync('db.json', 'utf8'));
+var data = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 
 var return404 = function(res) {
   res.setHeader('Content-Type', 'application/json');
@@ -52,6 +52,12 @@ var port = process.env.PORT || 8080; // set our port
 // ROUTES FOR OUR API
 // =============================================================================
 var router = express.Router(); // get an instance of the express Router
+// simple logger for this router's requests
+// all requests to this router will first hit this middleware
+router.use(function(req, res, next) {
+  console.log('%s %s %s', req.method, req.url, req.path);
+  next();
+});
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
