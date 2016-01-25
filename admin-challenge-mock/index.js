@@ -1,4 +1,3 @@
-
 var fs = require('fs');
 var data = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 
@@ -18,8 +17,8 @@ var return404 = function(res) {
 }
 
 var returnData = function(res, data) {
-  res.setHeader('Content-Type', 'application/json');
-  res.json({
+    res.setHeader('Content-Type', 'application/json');
+    res.json({
       "id": "23bd6312:14e1d778bb9:-7fff",
       "result": {
         "success": true,
@@ -78,24 +77,50 @@ router.get('/challenges/', function(req, res) {
 });
 
 router.get('/members/:handle', function(req, res) {
-  var respData = _.find(data.members, function(m) {return req.params["handle"] === m.handle});
-  respData ? returnData(res, respData): return404(res);
+  var respData = _.find(data.members, function(m) {
+    return req.params["handle"] === m.handle
+  });
+  respData ? returnData(res, respData) : return404(res);
 })
 
 router.get('/challenges/:id', function(req, res) {
-  var respData = _.find(data.challenges, function(m) {return req.params["id"] == m.id});
-  respData ? returnData(res, respData): return404(res);;
+  var respData = _.find(data.challenges, function(m) {
+    return req.params["id"] == m.id
+  });
+  respData ? returnData(res, respData) : return404(res);;
 })
 
 router.get('/users/:id', function(req, res) {
-  var respData = _.find(data.users, function(m) {return req.params["id"] == m.id});
-  respData ? returnData(res, respData): return404(res);
+  var respData = _.find(data.users, function(m) {
+    return req.params["id"] == m.id
+  });
+  respData ? returnData(res, respData) : return404(res);
 })
 
 router.get('/members/:handle/challenges/', function(req, res) {
-  var cid =req.query.filter.split("=")[1];
-  var respData = _.find(data.challenges, function(m) {return cid == m.id});
-  respData ? returnData(res, [respData]): return404(res);  
+  var cid = req.query.filter.split("=")[1];
+  var respData = _.find(data.challenges, function(m) {
+    return cid == m.id
+  });
+  respData ? returnData(res, [respData]) : return404(res);
+})
+
+router.post('/files/uploadurl', function(req, res) {
+  res.json({
+    "id": "23bd6312:14e1d778bb9:-7fff",
+    "result": {
+      "success": true,
+      "status": 200,
+      "metadata": null,
+      "content": {
+        "filePath": req.body.param.filePath,
+        "preSignedURL": "https://sandbox-temp-bucket.s3.amazonaws.com/files/" + req.body.param.filePath,
+        "contentType": req.body.param.contentType,
+        "public": true
+      }
+    },
+    "version": "v3"
+  });
 })
 
 // more routes for our API will happen here
