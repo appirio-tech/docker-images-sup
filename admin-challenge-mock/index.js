@@ -84,7 +84,7 @@ router.get('/members/:handle', function(req, res) {
 
 router.get('/challenges/:id', function(req, res) {
   var respData = _.find(data.challenges, function(m) {return req.params["id"] == m.id});
-  respData ? returnData(res, respData): return404(res);;
+  respData ? returnData(res, [respData]): return404(res);;
 })
 
 router.get('/users/:id', function(req, res) {
